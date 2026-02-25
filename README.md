@@ -106,9 +106,15 @@ User Interaction → Component → Custom Hook → API Helper → TMDb API
 
 3. **Configure API Key**
    
-   Open `src/helpers/Apis.js` and replace the API key with your own:
-   ```javascript
-   const API_KEY = 'your_api_key_here';
+   Create a `.env` file in the root directory:
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Open `.env` and replace `your_api_key_here` with your TMDb API key:
+   ```env
+   REACT_APP_TMDB_API_KEY=your_api_key_here
+   REACT_APP_TMDB_BASE_URL=https://api.themoviedb.org/3
    ```
 
 4. **Start the development server**
