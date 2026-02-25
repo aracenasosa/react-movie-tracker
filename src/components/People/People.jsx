@@ -1,12 +1,14 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { SearchPeople, AllCredits, AllSocialNetworks } from '../../hooks/CustomHooks';
 import Style from './People.module.css';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import image_404 from '../../img/404.jpg';
 
-const People = ({ match: { params: { id } } }) => {
+const People = () => {
 
+    const { id } = useParams();
 
     const { data, loading, error } = SearchPeople(id);
     const { data: data2, loading: loading2, error: error2 } = AllCredits(id);
@@ -103,24 +105,24 @@ const People = ({ match: { params: { id } } }) => {
                     <h2 style={{ display: data2.length > 0 ? 'grid' : 'none' }}>Known For</h2>
                     <div style={{ display: data2.length > 0 ? 'grid' : 'none' }} className={Style.knownFor}>
                         {data2 ? data2.slice(0, 12).map(credit => (
-                            <a key={credit.id} href={`/details/${credit.id}`} style={{ textDecoration: 'none', color: '#000' }}>
+                            <Link key={credit.id} to={`/details/${credit.id}`} style={{ textDecoration: 'none', color: '#000' }}>
                                 <div className={Style.innerContent}>
                                     {credit.poster_path !== null ? <img src={`https://image.tmdb.org/t/p/original/${credit.poster_path}`} /> : <img src={image_404} style={{ width: '150px', height: '225px' }} />}
                                     <p style={{ margin: '5px 0 12px 0', fontSize: '13px' }}>{credit.title}</p>
                                 </div>
-                            </a>)) : ""}
+                            </Link>)) : ""}
                     </div>
                     {data2.length > 12 ? <Link to={`/knowfor/${id}`}><p className={Style.more}>Show All Known For</p></Link> : ''}
                     { /* year - name of movie - character */}
                     <h2 style={{ display: data2.length > 0 ? 'block' : 'none' }} >Acting</h2>
                     <div style={{ display: data2.length > 0 ? 'block' : 'none' }} className={Style.acting}>
                         {data2.map(credit => (
-                            <a href={`/details/${credit.id}`} style={{ textDecoration: 'none', color: '#000' }}>
+                            <Link to={`/details/${credit.id}`} style={{ textDecoration: 'none', color: '#000' }}>
                                 <div className={Style.actingContainer} style={{ display: credit.character && credit.title ? 'flex' : 'none' }}>
                                     <span>{credit.release_date ? new Date(credit.release_date).getFullYear() : "Not Available"}</span> <div className={Style.circle}></div> <span className={Style.spanSpacing}>{credit.title ? credit.title : "Not Available"}</span>
                                     <span className={Style.as}> as </span> <span className={Style.charater}> {credit.character ? credit.character : "Not Available"}</span>
                                 </div>
-                            </a>))}
+                            </Link>))}
                     </div>
 
                 </div>

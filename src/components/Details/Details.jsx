@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { MovieDetails, CreditsCrew, KeywordsMovie, CommentsMovie, SearchRecommendations, ApisVideos } from '../../hooks/CustomHooks';
 import Style from './Details.module.css';
 import CountUp from 'react-countup';
@@ -8,7 +9,9 @@ import image_404 from '../../img/404.jpg';
 import userImg from '../../img/user.svg';
 import ReactPlayer from 'react-player';
 
-const Details = ({ match: { params: { id } } }) => {
+const Details = () => {
+
+    const { id } = useParams();
 
     const { data, loading, error } = MovieDetails(id);
     const { data: data2, loading2, error2 } = CreditsCrew(id);
@@ -221,12 +224,12 @@ const Details = ({ match: { params: { id } } }) => {
                         <p style={{ margin: '10px 0' }}> {data5.length < 1 ? "Not Recommendation Available" : ""} </p>
                         <div className={Style.recommendation}>
                             {data5.slice(0, 12).map(recommendation => (
-                                <a href={`/details/${recommendation.id}`} style={{ textDecoration: 'none', color: '#000' }}>
+                                <Link to={`/details/${recommendation.id}`} style={{ textDecoration: 'none', color: '#000' }}>
                                     <div>
                                         <img src={recommendation.poster_path ? `https://image.tmdb.org/t/p/original/${recommendation.poster_path}` : image_404} />
                                         <p style={{ marginTop: '10px' }}>{recommendation.title}</p>
                                     </div>
-                                </a>))}
+                                </Link>))}
 
                             {data5.length > 12 ? <Link to={`/recommendation/${id}`} style={{ textDecoration: 'none', color: '#000' }}><p className={Style.more}>Show All Recommendations</p></Link> : ''}
 

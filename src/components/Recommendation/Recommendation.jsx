@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import image_404 from '../../img/404.jpg';
 import { SearchRecommendations, MovieDetails } from '../../hooks/CustomHooks';
 import Style from './Recommendation.module.css';
 
-const Recommendation = ({ match: { params: { id } } }) => {
+const Recommendation = () => {
+
+    const { id } = useParams();
 
     const { data: recommendations, loadingRecommendations, errorRecommendations } = SearchRecommendations(id);
     const { data: movie, loading: loadingMovie, error: errorMovie } = MovieDetails(id);
@@ -32,12 +34,12 @@ const Recommendation = ({ match: { params: { id } } }) => {
 
             <section className={Style.container}>
                 {recommendations ? recommendations.map(recommendation => (
-                    <a href={`/details/${recommendation.id}`} style={{ textDecoration: 'none', color: '#000' }}>
+                    <Link to={`/details/${recommendation.id}`} style={{ textDecoration: 'none', color: '#000' }}>
                         <div>
                             {recommendation.poster_path ? <img src={`https://image.tmdb.org/t/p/original/${recommendation.poster_path}`} /> : <img src={image_404} />}
                             <p className={Style.title}>{recommendation.title}</p>
                         </div>
-                    </a>)) : "Not Available"}
+                    </Link>)) : "Not Available"}
             </section>
 
         </>

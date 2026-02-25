@@ -54,8 +54,8 @@ react-movie-tracker/
 
 ### Technology Stack
 
-- **Frontend Framework**: React 16.13.1
-- **Routing**: React Router DOM 5.2.0
+- **Frontend Framework**: React 18.2.0
+- **Routing**: React Router DOM 6.8.0
 - **HTTP Client**: Axios 0.20.0
 - **UI Framework**: React Bootstrap 1.3.0 + Bootstrap 4.5.3
 - **Styling**: CSS Modules
@@ -63,6 +63,7 @@ react-movie-tracker/
 - **Animations**: React CountUp 4.3.3
 - **Date Handling**: Moment.js 2.29.1
 - **Utilities**: Classnames 2.2.6
+- **Build Tool**: React Scripts 5.0.1
 
 ### Component Architecture
 

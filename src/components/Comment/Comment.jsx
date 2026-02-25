@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Style from './Comment.module.css';
 import { MovieDetails, CommentsMovie } from '../../hooks/CustomHooks';
 import { Link } from 'react-router-dom';
 import image_404 from '../../img/404.jpg';
 
-const Comment = ({ match: { params: { id } } }) => {
+const Comment = () => {
+
+    const { id } = useParams();
 
     const { data: movie, loading: loadingMovie, error: errorMovie } = MovieDetails(id);
     const { data: comments, loadingComment, errorComment } = CommentsMovie(id);

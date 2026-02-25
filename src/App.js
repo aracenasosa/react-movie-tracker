@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
+import { Routes, BrowserRouter as Router, Route } from 'react-router-dom'
 import { Search, Nav, Details, People, Footer, CastCrew, Comment, Recommendation, KnowFor } from './components/components';
+import ScrollToTop from './helpers/ScrollToTop';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
@@ -11,21 +12,20 @@ const App = () => {
     return (
         <>
             <Router>
+                <ScrollToTop />
                 <Nav />
-                <Switch>
+                <Routes>
 
-                    <Route exact path="/">
-                       <Search search={ search } setSearch={ setSearch }/>
-                    </Route>
+                    <Route path="/" element={<Search search={ search } setSearch={ setSearch }/>} />
 
-                    <Route path="/details/:id" component={ Details }/>
-                    <Route path="/people/:id" component={ People }/>
-                    <Route path="/cast&crew/:id" component={ CastCrew }/>
-                    <Route path="/knowfor/:id" component={ KnowFor }/>
-                    <Route path="/comment/:id" component={ Comment }/>
-                    <Route path="/recommendation/:id" component={ Recommendation }/>
+                    <Route path="/details/:id" element={<Details />}/>
+                    <Route path="/people/:id" element={<People />}/>
+                    <Route path="/cast&crew/:id" element={<CastCrew />}/>
+                    <Route path="/knowfor/:id" element={<KnowFor />}/>
+                    <Route path="/comment/:id" element={<Comment />}/>
+                    <Route path="/recommendation/:id" element={<Recommendation />}/>
 
-                </Switch>
+                </Routes>
                 <Footer/>
             </Router>
         </>

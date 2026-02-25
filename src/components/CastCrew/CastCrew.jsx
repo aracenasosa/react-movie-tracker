@@ -1,11 +1,14 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import Style from './CastCrew.module.css';
 import { CreditsCrew, MovieDetails } from '../../hooks/CustomHooks';
 import { Link } from 'react-router-dom';
 import userImg from '../../img/user.svg';
 import image_404 from '../../img/404.jpg';
 
-const CastCrew = ({ match: { params: { id } } }) => {
+const CastCrew = () => {
+
+    const { id } = useParams();
 
     const { data, loading, error } = CreditsCrew(id);
     const { data: movie, loading: loadingMovie, error: errorMovie } = MovieDetails(id);

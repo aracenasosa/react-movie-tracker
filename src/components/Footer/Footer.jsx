@@ -6,7 +6,7 @@ const Footer = () => {
         <footer className={Style.footer}>
             <div>
                 <h3>All rights reserved By Carlos Aracena 2020 </h3>
-                <a href="https://github.com/thefather20014" style={{ textDecoration: 'none', color: '#fff' }} target="_blank">
+                <a href="https://github.com/aracenasosa" style={{ textDecoration: 'none', color: '#fff' }} target="_blank">
                     <i className="fab fa-github"></i>
                 </a>
                 <a href="https://www.facebook.com/carlos.aracenasosa/" style={{ textDecoration: 'none', color: '#fff' }} target="_blank">
