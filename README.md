@@ -83,6 +83,40 @@ User Interaction → Component → Custom Hook → API Helper → TMDb API
                               UI Re-render
 ```
 
+## 🚀 Deployment
+
+### Deploying to Vercel
+
+This project is configured for easy deployment on Vercel:
+
+1. **Push your code to GitHub**
+
+2. **Import project in Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Click "New Project"
+   - Import your GitHub repository
+
+3. **Configure Environment Variables**
+   
+   In your Vercel project settings, add the following environment variables:
+   ```
+   REACT_APP_TMDB_API_KEY=your_api_key_here
+   REACT_APP_TMDB_BASE_URL=https://api.themoviedb.org/3
+   ```
+
+4. **Deploy**
+   
+   Vercel will automatically build and deploy your application. Every push to your main branch will trigger a new deployment.
+
+### Manual Deployment
+
+Alternatively, you can deploy using Vercel CLI:
+
+```bash
+npm install -g vercel
+vercel --prod
+```
+
 ## 🚀 Installation
 
 ### Prerequisites
